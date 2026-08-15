@@ -1,0 +1,309 @@
+/* ======================================================================
+   LOGIN MODAL — Premium glassmorphic design matching SearchEngineSim theme
+   Uses existing --color-* CSS variables from index.css
+   ====================================================================== */
+
+/* ---------- Backdrop ---------- */
+.lm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: lm-fade-in 0.25s ease;
+}
+
+@keyframes lm-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---------- Panel ---------- */
+.lm-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255,255,255,0.04) inset;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  animation: lm-slide-up 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes lm-slide-up {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* ---------- Close Button ---------- */
+.lm-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+  z-index: 10;
+  cursor: pointer;
+}
+.lm-close:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+  transform: scale(1.1);
+}
+
+/* ---------- Header ---------- */
+.lm-header {
+  padding: 2rem 2rem 1rem;
+  text-align: center;
+}
+
+.lm-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.lm-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+.lm-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Form Body ---------- */
+.lm-body {
+  padding: 0 2rem 1.75rem;
+}
+
+/* ---------- Field Groups ---------- */
+.lm-field {
+  margin-bottom: 1rem;
+}
+
+.lm-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.lm-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: var(--color-background);
+  border: 1.5px solid var(--color-border);
+  border-radius: 0.625rem;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.lm-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.lm-input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+/* ---------- Error ---------- */
+.lm-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* ---------- Primary Button ---------- */
+.lm-btn-primary {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 0.625rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+}
+.lm-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+}
+.lm-btn-primary:active { transform: translateY(0); }
+.lm-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ---------- Google Button ---------- */
+.lm-btn-google {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--color-background);
+  border: 1.5px solid var(--color-border);
+  border-radius: 0.625rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
+}
+.lm-btn-google:hover {
+  background: var(--color-border);
+  border-color: var(--color-primary);
+  color: var(--color-text);
+  transform: translateY(-1px);
+}
+
+.lm-google-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ---------- Divider ---------- */
+.lm-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.lm-divider::before,
+.lm-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+/* ---------- Links Row ---------- */
+.lm-links {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.625rem;
+}
+.lm-links button {
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+.lm-links button:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* ---------- Register Row ---------- */
+.lm-register-row {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.125rem;
+}
+.lm-register-row button {
+  color: var(--color-primary);
+  font-weight: 600;
+  background: none;
+  border: none;
+  font-size: 0.8125rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.lm-register-row button:hover {
+  text-decoration: underline;
+  color: var(--color-primary-hover);
+}
+
+/* ---------- Guest Banner ---------- */
+.lm-guest-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.875rem;
+  margin-top: 0.875rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  justify-content: center;
+  font-family: inherit;
+}
+.lm-guest-banner:hover {
+  background: rgba(99, 102, 241, 0.13);
+  color: var(--color-text);
+}
+
+/* ---------- Loading Spinner ---------- */
+@keyframes lm-spin {
+  to { transform: rotate(360deg); }
+}
+.lm-spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: lm-spin 0.7s linear infinite;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}

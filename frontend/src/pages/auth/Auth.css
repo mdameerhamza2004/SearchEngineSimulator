@@ -1,0 +1,498 @@
+/* ======================================================================
+   AUTH PAGES — Beautiful gradient background + themed card
+   Uses CSS variables from index.css for light/dark compatibility.
+   ====================================================================== */
+
+/* ---------- Page Wrapper — rich gradient background ---------- */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  min-height: calc(100vh - 65px);
+
+  /* Deep indigo → violet → midnight gradient */
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 60% 10%, rgba(59, 130, 246, 0.10) 0%, transparent 50%),
+    linear-gradient(160deg, #0f172a 0%, #1e1b4b 45%, #0f172a 80%, #0c1827 100%);
+}
+
+/* Light mode: softer tones */
+body:not(.dark) .auth-container {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.07) 0%, transparent 55%),
+    linear-gradient(160deg, #dde8fa 0%, #ede9fe 50%, #dbeafe 100%);
+}
+
+/* ---------- Card ---------- */
+.auth-card {
+  background: rgba(30, 41, 59, 0.85);  /* Slate-800 semi-transparent */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #f1f5f9;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 2.25rem 2.25rem 1.75rem;
+  border-radius: 1.125rem;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  width: 100%;
+  max-width: 430px;
+  animation: auth-card-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes auth-card-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* Light mode card */
+body:not(.dark) .auth-card {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  border-color: rgba(99, 102, 241, 0.15);
+  box-shadow: 0 16px 48px rgba(99, 102, 241, 0.12), 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.auth-card h2 {
+  margin: 0 0 1.625rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.02em;
+}
+
+body:not(.dark) .auth-card h2 {
+  color: #0f172a;
+}
+
+/* ---------- Form groups ---------- */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+body:not(.dark) .form-group label {
+  color: #475569;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.7rem 0.9375rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1.5px solid rgba(99, 102, 241, 0.25);
+  border-radius: 0.5625rem;
+  font-size: 0.9375rem;
+  color: #f1f5f9;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+body:not(.dark) .form-group input {
+  background: rgba(241, 245, 249, 0.8);
+  color: #0f172a;
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.form-group input::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.form-group input:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
+body:not(.dark) .form-group input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5625rem;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  margin-bottom: 0.625rem;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.btn.primary:active { transform: translateY(0); }
+
+.btn.google {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+body:not(.dark) .btn.google {
+  background: rgba(15, 23, 42, 0.04);
+  color: #1e293b;
+  border-color: rgba(99, 102, 241, 0.18);
+}
+
+.btn.google:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(129, 140, 248, 0.5);
+  color: #fff;
+}
+
+body:not(.dark) .btn.google:hover {
+  background: rgba(99, 102, 241, 0.06);
+  color: #0f172a;
+}
+
+/* ---------- Divider ---------- */
+.divider {
+  text-align: center;
+  margin: 0.875rem 0;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body:not(.dark) .divider::before,
+body:not(.dark) .divider::after {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.divider::before { left: 0; }
+.divider::after  { right: 0; }
+
+/* ---------- Auth links ---------- */
+.auth-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  text-align: center;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body:not(.dark) .auth-links {
+  border-top-color: rgba(99, 102, 241, 0.12);
+}
+
+.auth-links a {
+  color: #818cf8;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.auth-links a:hover {
+  color: #a5b4fc;
+  text-decoration: underline;
+}
+
+body:not(.dark) .auth-links a {
+  color: #6366f1;
+}
+
+body:not(.dark) .auth-links a:hover {
+  color: #4f46e5;
+}
+
+/* ---------- Alert messages (non-modal inline) ---------- */
+.success {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ======================================================================
+   AUTH ERROR MODAL — Popup for errors (replaces inline error box)
+   ====================================================================== */
+
+/* Backdrop */
+.aem-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: aem-fade 0.2s ease;
+}
+
+@keyframes aem-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Panel */
+.aem-panel {
+  position: relative;
+  background: linear-gradient(145deg, #1e1b4b, #1e293b);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 1.125rem;
+  box-shadow:
+    0 0 0 1px rgba(239, 68, 68, 0.08) inset,
+    0 24px 64px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 400px;
+  padding: 2.25rem 2rem 2rem;
+  text-align: center;
+  animation: aem-slide 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body:not(.dark) .aem-panel {
+  background: linear-gradient(145deg, #fff, #fef2f2);
+  border-color: rgba(239, 68, 68, 0.2);
+  box-shadow: 0 16px 48px rgba(239, 68, 68, 0.1), 0 4px 16px rgba(0,0,0,0.08);
+}
+
+@keyframes aem-slide {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+/* X close button */
+.aem-close {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body:not(.dark) .aem-close {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #64748b;
+}
+
+.aem-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  transform: scale(1.1);
+}
+
+/* Icon */
+.aem-icon-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.aem-icon {
+  color: #f87171;
+  filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.4));
+}
+
+/* Title */
+.aem-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+body:not(.dark) .aem-title {
+  color: #0f172a;
+}
+
+/* Message */
+.aem-message {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+body:not(.dark) .aem-message {
+  color: #475569;
+}
+
+/* Close / dismiss button */
+.aem-btn-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 0.65rem 1.5rem;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+}
+
+.aem-btn-close:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.45);
+}
+
+.aem-btn-close:active { transform: translateY(0); }
+
+/* ======================================================================
+   PASSWORD INPUT WITH VISIBILITY TOGGLE
+   ====================================================================== */
+
+/* Wrapper — gives us a stacking context for the absolute toggle button */
+.pw-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* The actual <input> — styled identically to .form-group input */
+.pw-input {
+  width: 100%;
+  padding: 0.7rem 2.75rem 0.7rem 0.9375rem; /* right padding for the icon */
+  background: rgba(15, 23, 42, 0.6);
+  border: 1.5px solid rgba(99, 102, 241, 0.25);
+  border-radius: 0.5625rem;
+  font-size: 0.9375rem;
+  color: #f1f5f9;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+body:not(.dark) .pw-input {
+  background: rgba(241, 245, 249, 0.8);
+  color: #0f172a;
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.pw-input::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.pw-input:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
+body:not(.dark) .pw-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Eye / eye-off toggle button */
+.pw-toggle {
+  position: absolute;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 0.25rem;
+  transition: color 0.18s ease, background 0.18s ease;
+  /* Do not shrink; keep it above the input visually */
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.pw-toggle:hover {
+  color: #a5b4fc;
+  background: rgba(129, 140, 248, 0.1);
+}
+
+body:not(.dark) .pw-toggle {
+  color: #94a3b8;
+}
+
+body:not(.dark) .pw-toggle:hover {
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.08);
+}
+
+/* Focus ring on the toggle for keyboard users */
+.pw-toggle:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 2px;
+}
+

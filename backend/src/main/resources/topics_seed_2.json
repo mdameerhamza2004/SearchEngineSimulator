@@ -1,0 +1,500 @@
+[
+  {
+    "title": "Graph",
+    "slug": "graph",
+    "difficulty": "ADVANCED",
+    "overview": "Non-linear data structure with nodes and edges.",
+    "coreConcepts": ["Vertices", "Edges", "Directed", "Undirected"],
+    "visualExplanation": "City map with roads.",
+    "learningObjectives": ["BFS/DFS on graphs", "Shortest path", "Cycle detection"],
+    "explanation": "Nodes connected by edges forming a network.",
+    "internalWorking": "Adjacency matrix or list.",
+    "algorithm": "Traversals explore connected components.",
+    "pseudocode": "dfs(u) { visited[u] = true; for v in adj[u] dfs(v); }",
+    "timeComplexity": "O(V + E) traversal",
+    "spaceComplexity": "O(V + E)",
+    "importantPatterns": ["Topological Sort", "Dijkstra", "MST"],
+    "realWorldApplications": ["Social networks", "Routing algorithms"],
+    "relatedTopics": ["Trees", "Matrix", "DFS", "BFS"],
+    "codeImplementations": {"java": "List<List<Integer>> adj = new ArrayList<>();", "cpp": "vector<int> adj[N];"},
+    "practiceQuestions": [
+      {"difficulty": "EASY", "prompt": "Find Center", "solution": "Degree check", "explanation": "O(1)"},
+      {"difficulty": "EASY", "prompt": "Path Exists", "solution": "BFS/DFS", "explanation": "O(V+E)"},
+      {"difficulty": "EASY", "prompt": "Town Judge", "solution": "Indegree/Outdegree", "explanation": "O(V+E)"},
+      {"difficulty": "EASY", "prompt": "Flood Fill", "solution": "Matrix DFS", "explanation": "O(V)"},
+      {"difficulty": "EASY", "prompt": "Number of Provinces", "solution": "Connected Components", "explanation": "O(V^2)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Clone Graph", "solution": "DFS + Map", "explanation": "O(V+E)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Course Schedule", "solution": "Topological Sort / Cycle", "explanation": "O(V+E)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Network Delay Time", "solution": "Dijkstra", "explanation": "O(E log V)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Is Bipartite", "solution": "Coloring BFS", "explanation": "O(V+E)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Cheapest Flights", "solution": "Bellman Ford", "explanation": "O(K*E)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Number of Islands", "solution": "Grid DFS", "explanation": "O(R*C)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Word Ladder", "solution": "BFS shortest path", "explanation": "O(N*M)"},
+      {"difficulty": "ADVANCED", "prompt": "Alien Dictionary", "solution": "Topo Sort", "explanation": "O(V+E)"},
+      {"difficulty": "ADVANCED", "prompt": "Critical Connections", "solution": "Tarjan Bridges", "explanation": "O(V+E)"},
+      {"difficulty": "ADVANCED", "prompt": "Minimum Spanning Tree", "solution": "Kruskal / Prim", "explanation": "O(E log V)"},
+      {"difficulty": "ADVANCED", "prompt": "Word Ladder II", "solution": "BFS + DFS paths", "explanation": "O(N*M + Paths)"},
+      {"difficulty": "ADVANCED", "prompt": "Longest Increasing Path", "solution": "DFS + Memo", "explanation": "O(V+E)"}
+    ],
+    "placementQuestions": [
+      {"prompt": "Cycle in Directed Graph", "hints": ["DFS colors"], "solution": "O(V+E)"},
+      {"prompt": "Eulerian Path", "hints": ["Degree check"], "solution": "O(V+E)"},
+      {"prompt": "Strongly Connected", "hints": ["Kosaraju"], "solution": "O(V+E)"}
+    ],
+    "interviewQuestions": [
+      {"question": "Matrix vs List?", "answer": "Dense vs Sparse.", "explanation": "Space trade-off."},
+      {"question": "Dijkstra vs Bellman Ford?", "answer": "No negative weights vs Handles negatives.", "explanation": "Shortest path."},
+      {"question": "Topological Sort?", "answer": "DAG linear order.", "explanation": "Dependencies."},
+      {"question": "Cycle detection?", "answer": "Back edges.", "explanation": "DFS."},
+      {"question": "Bipartite?", "answer": "2-colorable.", "explanation": "No odd length cycles."},
+      {"question": "Kruskal vs Prim?", "answer": "Sort edges vs Grow tree.", "explanation": "MST algorithms."},
+      {"question": "Tree vs Graph?", "answer": "Tree is connected acyclic undirected graph.", "explanation": "Definitions."},
+      {"question": "Floyd Warshall?", "answer": "All pairs shortest.", "explanation": "O(V^3)."},
+      {"question": "Indegree/Outdegree?", "answer": "Edges in/out.", "explanation": "Directed graphs."},
+      {"question": "Articulation Point?", "answer": "Removal disconnects graph.", "explanation": "Tarjan's algorithm."}
+    ],
+    "deepDiveInterviewQuestions": [
+      {"question": "Tarjan SCC?", "answer": "Low-link values via DFS."},
+      {"question": "Dijkstra negative weights?", "answer": "Fails because it assumes added edges increase total distance."},
+      {"question": "A* Algorithm?", "answer": "Heuristic based Dijkstra."}
+    ],
+    "comparisonQuestions": [
+      {"question": "BFS vs DFS", "answer": "Queue/Shortest Path vs Stack/Backtracking."},
+      {"question": "Adjacency List vs Matrix", "answer": "O(V+E) space vs O(V^2) space."}
+    ],
+    "conceptualQuestions": [
+      {"question": "Why Dijkstra fails on negative weights?", "answer": "Greedy choice is compromised."},
+      {"question": "Why Topo sort needs DAG?", "answer": "Cycle means circular dependency."},
+      {"question": "Why Bellman Ford loops V-1 times?", "answer": "Longest simple path is V-1 edges."}
+    ],
+    "edgeCases": ["Disconnected", "Single node", "Empty", "Self loops", "Multiple edges"],
+    "commonMistakes": ["Forgetting visited array", "Infinite loops", "Wrong init of distances", "Matrix index out of bounds", "Negative cycles unhandled"],
+    "mcqs": [
+      {"question": "Shortest path unweighted?", "options": ["BFS","DFS","Dijkstra","Kruskal"], "correctOption": "BFS", "explanation": "Queue"},
+      {"question": "MST?", "options": ["Prim","Bellman Ford","Floyd","Tarjan"], "correctOption": "Prim", "explanation": "Greedy"},
+      {"question": "Negative cycle?", "options": ["Bellman Ford","Dijkstra","BFS","DFS"], "correctOption": "Bellman Ford", "explanation": "Vth iteration"},
+      {"question": "Matrix space?", "options": ["O(V^2)","O(V+E)","O(E^2)","O(V)"], "correctOption": "O(V^2)", "explanation": "V x V"},
+      {"question": "Topo sort?", "options": ["DAG","Tree","Cycle","Undirected"], "correctOption": "DAG", "explanation": "Directed Acyclic"}
+    ],
+    "outputBasedQuestions": [
+      {"code": "dfs(start)", "output": "Visited nodes", "explanation": "Traversal"},
+      {"code": "dijkstra()", "output": "Distances", "explanation": "Shortest path"},
+      {"code": "hasCycle()", "output": "True/False", "explanation": "Check"}
+    ]
+  },
+  {
+    "title": "Recursion",
+    "slug": "recursion",
+    "difficulty": "BEGINNER",
+    "overview": "Function calling itself.",
+    "coreConcepts": ["Base Case", "Recursive Case", "Call Stack"],
+    "visualExplanation": "Russian nesting dolls.",
+    "learningObjectives": ["Base cases", "Stack frames", "Backtracking intro"],
+    "explanation": "Solving a problem by solving smaller instances.",
+    "internalWorking": "CPU call stack stores state.",
+    "algorithm": "Check base case, then call self with modified args.",
+    "pseudocode": "if base return; else return fn(n-1);",
+    "timeComplexity": "O(Branch^Depth)",
+    "spaceComplexity": "O(Depth)",
+    "importantPatterns": ["Divide and Conquer", "Backtracking", "Memoization"],
+    "realWorldApplications": ["DOM traversal", "JSON parsing"],
+    "relatedTopics": ["DP", "Trees", "Sorting"],
+    "codeImplementations": {"java": "int f(int n) { return n<=1?n:f(n-1)+f(n-2); }", "cpp": "int f(int n) { return n<=1?n:f(n-1)+f(n-2); }"},
+    "practiceQuestions": [
+      {"difficulty": "EASY", "prompt": "Factorial", "solution": "n * f(n-1)", "explanation": "O(n)"},
+      {"difficulty": "EASY", "prompt": "Fibonacci", "solution": "f(n-1)+f(n-2)", "explanation": "O(2^n)"},
+      {"difficulty": "EASY", "prompt": "Sum of Array", "solution": "arr[0] + sum(rest)", "explanation": "O(n)"},
+      {"difficulty": "EASY", "prompt": "Reverse String", "solution": "last + reverse(rest)", "explanation": "O(n)"},
+      {"difficulty": "EASY", "prompt": "Power(x,n)", "solution": "x * Power(x, n-1)", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Fast Power", "solution": "Divide and conquer", "explanation": "O(log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Tower of Hanoi", "solution": "Move n-1, move 1, move n-1", "explanation": "O(2^n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Generate Parentheses", "solution": "Backtrack", "explanation": "Catalan"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Subsets", "solution": "Include/Exclude", "explanation": "O(2^n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Permutations", "solution": "Swap and recurse", "explanation": "O(n!)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Combinations", "solution": "Choose k", "explanation": "O(nCk)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Letter Combinations", "solution": "Phone digits mapping", "explanation": "O(4^n)"},
+      {"difficulty": "ADVANCED", "prompt": "N-Queens", "solution": "Backtrack grid", "explanation": "O(n!)"},
+      {"difficulty": "ADVANCED", "prompt": "Sudoku Solver", "solution": "Try 1-9", "explanation": "O(9^(empty))"},
+      {"difficulty": "ADVANCED", "prompt": "Word Search", "solution": "Grid DFS", "explanation": "O(R*C*4^L)"},
+      {"difficulty": "ADVANCED", "prompt": "Expression Add Operators", "solution": "Backtrack signs", "explanation": "O(4^n)"},
+      {"difficulty": "ADVANCED", "prompt": "Palindrome Partitioning", "solution": "Backtrack cuts", "explanation": "O(n * 2^n)"}
+    ],
+    "placementQuestions": [
+      {"prompt": "Subset Sum", "hints": ["Include/Exclude"], "solution": "O(2^n)"},
+      {"prompt": "Print all paths", "hints": ["Matrix DFS"], "solution": "O(2^(R+C))"},
+      {"prompt": "Josephus Problem", "hints": ["Math or recursion"], "solution": "O(n)"}
+    ],
+    "interviewQuestions": [
+      {"question": "Base case?", "answer": "Stopping condition.", "explanation": "Prevents infinite loop."},
+      {"question": "Stack overflow?", "answer": "Too many frames.", "explanation": "No base case or deep tree."},
+      {"question": "Tail recursion?", "answer": "Recursive call is last action.", "explanation": "Optimization."},
+      {"question": "Recursion tree?", "answer": "Visualize calls.", "explanation": "Analyze complexity."},
+      {"question": "Indirect recursion?", "answer": "A calls B, B calls A.", "explanation": "Mutual recursion."},
+      {"question": "Memoization?", "answer": "Cache results.", "explanation": "Avoid recomputation."},
+      {"question": "Iterative vs Recursive?", "answer": "Loop vs Function calls.", "explanation": "Space overhead."},
+      {"question": "Backtracking?", "answer": "Undo choices.", "explanation": "Explore all paths."},
+      {"question": "Divide and Conquer?", "answer": "Split into independent subproblems.", "explanation": "Merge sort."},
+      {"question": "Time complexity of multiple calls?", "answer": "Branching factor ^ depth.", "explanation": "Exponential."}
+    ],
+    "deepDiveInterviewQuestions": [
+      {"question": "Tail call optimization under the hood?", "answer": "Compiler reuses current stack frame instead of creating a new one."},
+      {"question": "Master Theorem?", "answer": "T(n) = aT(n/b) + f(n) to solve divide and conquer recurrences."},
+      {"question": "Ackermann function?", "answer": "Computable but not primitive recursive, grows extremely fast."}
+    ],
+    "comparisonQuestions": [
+      {"question": "Recursion vs Iteration", "answer": "Call stack overhead vs explicit loop variables."},
+      {"question": "DP vs Divide & Conquer", "answer": "Overlapping subproblems vs Independent subproblems."}
+    ],
+    "conceptualQuestions": [
+      {"question": "Why is base case required?", "answer": "To unwind the call stack and terminate."},
+      {"question": "Why does recursion use more memory?", "answer": "Each call allocates a new stack frame."},
+      {"question": "Why can any recursion be iterative?", "answer": "Because a call stack can be manually simulated with a Stack data structure."}
+    ],
+    "edgeCases": ["n = 0", "Negative inputs", "Empty data structure", "Very large n", "No solution paths"],
+    "commonMistakes": ["Missing base case", "State mutation leaking", "Returning wrong value", "Forgetting to backtrack", "Stack overflow"],
+    "mcqs": [
+      {"question": "Requires?", "options": ["Base case","Loop","Array","Class"], "correctOption": "Base case", "explanation": "Termination"},
+      {"question": "Data structure?", "options": ["Stack","Queue","Heap","Tree"], "correctOption": "Stack", "explanation": "Call stack"},
+      {"question": "Tail recursion?", "options": ["Optimizable","Slower","Infinite","Error"], "correctOption": "Optimizable", "explanation": "No frame overhead"},
+      {"question": "Backtracking?", "options": ["Undo choice","Greedy","DP","Hash"], "correctOption": "Undo choice", "explanation": "Explore paths"},
+      {"question": "Fibonacci naive time?", "options": ["O(2^n)","O(n)","O(1)","O(n^2)"], "correctOption": "O(2^n)", "explanation": "Two branches"}
+    ],
+    "outputBasedQuestions": [
+      {"code": "def f(x): return x if x<=1 else x+f(x-1); print(f(3))", "output": "6", "explanation": "3+2+1"},
+      {"code": "def f(x): f(x);", "output": "StackOverflow", "explanation": "Infinite"},
+      {"code": "def f(): return 1;", "output": "1", "explanation": "Base"}
+    ]
+  },
+  {
+    "title": "Sorting",
+    "slug": "sorting",
+    "difficulty": "INTERMEDIATE",
+    "overview": "Arranging elements in a specific order.",
+    "coreConcepts": ["Comparison", "Stability", "In-place"],
+    "visualExplanation": "Organizing a deck of cards by suit and value.",
+    "learningObjectives": ["O(n log n) algorithms", "Divide and conquer", "Stability concept"],
+    "explanation": "Fundamental operation to enable efficient searching and data analysis.",
+    "internalWorking": "Comparing and swapping elements.",
+    "algorithm": "Merge Sort: Divide array, sort halves, merge.",
+    "pseudocode": "if left<right: mid=(left+right)/2; sort(left,mid); sort(mid+1,right); merge()",
+    "timeComplexity": "O(n log n) optimal comparison",
+    "spaceComplexity": "O(1) to O(n)",
+    "importantPatterns": ["Merge Sort", "Quick Sort", "Custom Comparator"],
+    "realWorldApplications": ["Database indexing", "Data presentation"],
+    "relatedTopics": ["Binary Search", "Arrays", "Divide and Conquer"],
+    "codeImplementations": {"java": "Arrays.sort(arr);", "cpp": "sort(arr.begin(), arr.end());"},
+    "practiceQuestions": [
+      {"difficulty": "EASY", "prompt": "Bubble Sort", "solution": "Swap adjacent", "explanation": "O(n^2)"},
+      {"difficulty": "EASY", "prompt": "Selection Sort", "solution": "Find min", "explanation": "O(n^2)"},
+      {"difficulty": "EASY", "prompt": "Insertion Sort", "solution": "Insert in place", "explanation": "O(n^2)"},
+      {"difficulty": "EASY", "prompt": "Check if sorted", "solution": "Iterate", "explanation": "O(n)"},
+      {"difficulty": "EASY", "prompt": "Intersection of Arrays", "solution": "Two pointers on sorted", "explanation": "O(n log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Merge Sort", "solution": "Divide and merge", "explanation": "O(n log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Quick Sort", "solution": "Partitioning", "explanation": "O(n log n) avg"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Sort Colors", "solution": "Dutch flag", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Largest Number", "solution": "Custom comparator strings", "explanation": "O(n log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Kth Largest Element", "solution": "Quickselect", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Merge Intervals", "solution": "Sort by start", "explanation": "O(n log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Insertion Sort List", "solution": "Linked list insert", "explanation": "O(n^2)"},
+      {"difficulty": "ADVANCED", "prompt": "Count Inversions", "solution": "Merge sort modified", "explanation": "O(n log n)"},
+      {"difficulty": "ADVANCED", "prompt": "Reverse Pairs", "solution": "Merge sort advanced", "explanation": "O(n log n)"},
+      {"difficulty": "ADVANCED", "prompt": "Maximum Gap", "solution": "Radix/Bucket Sort", "explanation": "O(n)"},
+      {"difficulty": "ADVANCED", "prompt": "Sort List", "solution": "Merge sort linked list", "explanation": "O(n log n)"},
+      {"difficulty": "ADVANCED", "prompt": "Wiggle Sort II", "solution": "Virtual indexing", "explanation": "O(n)"}
+    ],
+    "placementQuestions": [
+      {"prompt": "Sort string of chars", "hints": ["Counting sort"], "solution": "O(n)"},
+      {"prompt": "Find duplicate in O(n) time and O(1) space", "hints": ["Cyclic sort"], "solution": "O(n)"},
+      {"prompt": "Pancake Sorting", "hints": ["Reverse prefixes"], "solution": "O(n^2)"}
+    ],
+    "interviewQuestions": [
+      {"question": "Stable sort?", "answer": "Preserves relative order of equal elements.", "explanation": "Important for multi-key sorting."},
+      {"question": "In-place sort?", "answer": "Uses O(1) extra space.", "explanation": "Quick sort is mostly in-place."},
+      {"question": "Quick Sort vs Merge Sort?", "answer": "In-place avg O(n log n) vs Stable O(n log n) with O(n) space.", "explanation": "Trade-offs."},
+      {"question": "Pivot selection?", "answer": "Random or Median of 3.", "explanation": "Prevents O(n^2) worst case in Quick Sort."},
+      {"question": "Counting Sort?", "answer": "Hash frequencies.", "explanation": "O(n) for small ranges."},
+      {"question": "Radix Sort?", "answer": "Sort digit by digit.", "explanation": "O(nk) for integers."},
+      {"question": "TimSort?", "answer": "Hybrid Merge/Insertion.", "explanation": "Used in Java/Python."},
+      {"question": "Worst case of Quick Sort?", "answer": "O(n^2).", "explanation": "When already sorted and bad pivot."},
+      {"question": "Heap Sort?", "answer": "O(n log n) in-place.", "explanation": "Not stable."},
+      {"question": "Lower bound of comparison sort?", "answer": "O(n log n).", "explanation": "Decision tree depth."}
+    ],
+    "deepDiveInterviewQuestions": [
+      {"question": "Prove O(n log n) lower bound.", "answer": "Decision tree has n! leaves, depth is log(n!) = O(n log n) by Stirling's approx."},
+      {"question": "Why is QuickSort faster in practice than MergeSort?", "answer": "Better cache locality and tight inner loop."},
+      {"question": "How does TimSort leverage real-world data?", "answer": "Finds existing sorted 'runs' and merges them."}
+    ],
+    "comparisonQuestions": [
+      {"question": "Merge Sort vs Quick Sort", "answer": "Stable O(n) space vs Unstable O(1) space."},
+      {"question": "Comparison vs Non-comparison sorts", "answer": "O(n log n) limit vs O(n) limit but restricted to integers."}
+    ],
+    "conceptualQuestions": [
+      {"question": "Why stability matters?", "answer": "Sorting by last name, then first name."},
+      {"question": "Why Insertion Sort for small arrays?", "answer": "Low constant overhead."},
+      {"question": "Why radix sort processes LSB first?", "answer": "To maintain stability of previous digits."}
+    ],
+    "edgeCases": ["Already sorted", "Reverse sorted", "All identical", "Empty", "One element"],
+    "commonMistakes": ["O(n^2) quicksort pivot", "Merge sort space leak", "Unstable sorting when required", "Index out of bounds", "Integer overflow in comparators"],
+    "mcqs": [
+      {"question": "Lower bound?", "options": ["O(n log n)","O(n)","O(n^2)","O(log n)"], "correctOption": "O(n log n)", "explanation": "Comparison"},
+      {"question": "Stable?", "options": ["Merge","Quick","Heap","Selection"], "correctOption": "Merge", "explanation": "Order"},
+      {"question": "In-place O(n log n)?", "options": ["Heap","Merge","Counting","Radix"], "correctOption": "Heap", "explanation": "No extra array"},
+      {"question": "QuickSort worst?", "options": ["O(n^2)","O(n log n)","O(n)","O(1)"], "correctOption": "O(n^2)", "explanation": "Bad pivot"},
+      {"question": "Python default?", "options": ["TimSort","QuickSort","MergeSort","HeapSort"], "correctOption": "TimSort", "explanation": "Hybrid"}
+    ],
+    "outputBasedQuestions": [
+      {"code": "sort([3,1,2])", "output": "[1,2,3]", "explanation": "Ascending"},
+      {"code": "sort(arr, reverse=True)", "output": "Descending", "explanation": "Order"},
+      {"code": "customSort()", "output": "Sorted", "explanation": "Comparator"}
+    ]
+  },
+  {
+    "title": "Binary Search",
+    "slug": "binary-search",
+    "difficulty": "INTERMEDIATE",
+    "overview": "O(log n) search on sorted data.",
+    "coreConcepts": ["Search Space", "Midpoint", "Monotonicity"],
+    "visualExplanation": "Looking up a word in a dictionary by halving pages.",
+    "learningObjectives": ["Find elements", "Find bounds", "Search on answer"],
+    "explanation": "Halves the search space each step by comparing mid.",
+    "internalWorking": "Two pointers bounding the search space.",
+    "algorithm": "while left<=right: mid=(left+right)/2; adjust bounds.",
+    "pseudocode": "if target==mid return; if target<mid right=mid-1 else left=mid+1;",
+    "timeComplexity": "O(log n)",
+    "spaceComplexity": "O(1)",
+    "importantPatterns": ["Binary Search on Answer", "First/Last occurrence"],
+    "realWorldApplications": ["Database lookups", "Git bisect"],
+    "relatedTopics": ["Arrays", "Sorting"],
+    "codeImplementations": {"java": "Arrays.binarySearch(arr, val);", "cpp": "binary_search(all(arr), val);"},
+    "practiceQuestions": [
+      {"difficulty": "EASY", "prompt": "Binary Search", "solution": "Standard algorithm", "explanation": "O(log n)"},
+      {"difficulty": "EASY", "prompt": "Search Insert Position", "solution": "Return left pointer", "explanation": "O(log n)"},
+      {"difficulty": "EASY", "prompt": "Valid Perfect Square", "solution": "BS 1 to num", "explanation": "O(log n)"},
+      {"difficulty": "EASY", "prompt": "Square Root", "solution": "BS on answer", "explanation": "O(log n)"},
+      {"difficulty": "EASY", "prompt": "First Bad Version", "solution": "Find first true", "explanation": "O(log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "First and Last Position", "solution": "Two BS calls", "explanation": "O(log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Search Rotated Array", "solution": "Find sorted half", "explanation": "O(log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Find Minimum in Rotated", "solution": "Compare mid to right", "explanation": "O(log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Search 2D Matrix", "solution": "Map 1D to 2D", "explanation": "O(log(m*n))"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Peak Element", "solution": "Compare mid to mid+1", "explanation": "O(log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Koko Eating Bananas", "solution": "BS on answer", "explanation": "O(N log M)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Minimum Size Subarray Sum", "solution": "Prefix Sum + BS", "explanation": "O(n log n)"},
+      {"difficulty": "ADVANCED", "prompt": "Median of Two Sorted Arrays", "solution": "BS on smaller array", "explanation": "O(log(min(m,n)))"},
+      {"difficulty": "ADVANCED", "prompt": "Split Array Largest Sum", "solution": "BS on answer", "explanation": "O(N log S)"},
+      {"difficulty": "ADVANCED", "prompt": "Kth Element of Two Sorted Arrays", "solution": "BS similar to median", "explanation": "O(log(min(m,n)))"},
+      {"difficulty": "ADVANCED", "prompt": "Minimize Max Distance to Gas Station", "solution": "BS on double answer", "explanation": "O(N log D)"},
+      {"difficulty": "ADVANCED", "prompt": "Find in Mountain Array", "solution": "Find peak, then 2 BS", "explanation": "O(log n)"}
+    ],
+    "placementQuestions": [
+      {"prompt": "Allocate Books", "hints": ["BS on max pages"], "solution": "O(N log S)"},
+      {"prompt": "Aggressive Cows", "hints": ["BS on distance"], "solution": "O(N log D)"},
+      {"prompt": "WoodCutting/Eko", "hints": ["BS on height"], "solution": "O(N log H)"}
+    ],
+    "interviewQuestions": [
+      {"question": "Prerequisite?", "answer": "Monotonic search space.", "explanation": "Usually sorted."},
+      {"question": "Mid calculation?", "answer": "left + (right-left)/2.", "explanation": "Prevents overflow."},
+      {"question": "Infinite loop?", "answer": "Wrong bounds update (e.g., left=mid).", "explanation": "Needs left=mid+1 or right=mid-1."},
+      {"question": "Time complexity?", "answer": "O(log n).", "explanation": "Halving."},
+      {"question": "Lower bound?", "answer": "First element >= target.", "explanation": "C++ std::lower_bound."},
+      {"question": "Upper bound?", "answer": "First element > target.", "explanation": "C++ std::upper_bound."},
+      {"question": "BS on answer?", "answer": "Search the range of possible solutions.", "explanation": "Optimization problems."},
+      {"question": "Ternary Search?", "answer": "For unimodal functions.", "explanation": "Splits into thirds."},
+      {"question": "Interpolation Search?", "answer": "Estimates position based on values.", "explanation": "O(log log n) avg."},
+      {"question": "Can BS work on linked lists?", "answer": "No, lacks random access.", "explanation": "O(n) traversal."}
+    ],
+    "deepDiveInterviewQuestions": [
+      {"question": "Overflow in (L+R)/2?", "answer": "L+R can exceed 2^31-1. Use L+(R-L)/2."},
+      {"question": "Proving BS on answer correctness?", "answer": "Predicate must be strictly monotonic (e.g. FFFTTT)."},
+      {"question": "Fractional Cascading?", "answer": "Speed up BS in multiple lists O(k + log n)."}
+    ],
+    "comparisonQuestions": [
+      {"question": "Binary vs Linear Search", "answer": "O(log n) sorted vs O(n) unsorted."},
+      {"question": "Binary Search Tree vs Array BS", "answer": "Dynamic updates vs Static data."}
+    ],
+    "conceptualQuestions": [
+      {"question": "Why log n?", "answer": "Search space is halved every iteration."},
+      {"question": "Why L+(R-L)/2?", "answer": "Avoid integer overflow."},
+      {"question": "Why BS on answer works?", "answer": "Because the validity function is monotonic."}
+    ],
+    "edgeCases": ["Target not found", "Array size 0 or 1", "All duplicates", "Target < min", "Target > max"],
+    "commonMistakes": ["Off by one errors", "Integer overflow", "Infinite loops", "Incorrect bounds update", "Not sorted"],
+    "mcqs": [
+      {"question": "Complexity?", "options": ["O(log n)","O(n)","O(1)","O(n log n)"], "correctOption": "O(log n)", "explanation": "Halving"},
+      {"question": "Requirement?", "options": ["Sorted","Unsorted","Linked","Tree"], "correctOption": "Sorted", "explanation": "Monotonic"},
+      {"question": "Midpoint fix?", "options": ["L+(R-L)/2","(L+R)/2","L+R/2","R+(L-R)/2"], "correctOption": "L+(R-L)/2", "explanation": "Overflow"},
+      {"question": "Ternary search space?", "options": ["Unimodal","Sorted","Unsorted","Random"], "correctOption": "Unimodal", "explanation": "One peak"},
+      {"question": "Upper bound of 2 in [1,2,2,3]?", "options": ["3","2","1","4"], "correctOption": "3", "explanation": "Strictly greater"}
+    ],
+    "outputBasedQuestions": [
+      {"code": "bs([1,2,3], 2)", "output": "1", "explanation": "Index"},
+      {"code": "bs([1,2,3], 5)", "output": "-1", "explanation": "Not found"},
+      {"code": "lower_bound([1,2,2,3], 2)", "output": "1", "explanation": "First occurrence"}
+    ]
+  },
+  {
+    "title": "Trie",
+    "slug": "trie",
+    "difficulty": "ADVANCED",
+    "overview": "Prefix tree for strings.",
+    "coreConcepts": ["Nodes", "Edges as Chars", "Prefixes"],
+    "visualExplanation": "Autofill suggestions tree.",
+    "learningObjectives": ["String search", "Prefix matching", "Trie vs Hash"],
+    "explanation": "Each node represents a character, path from root forms a string.",
+    "internalWorking": "Nodes have array/map of children and an isEndOfWord boolean.",
+    "algorithm": "Traverse tree matching chars.",
+    "pseudocode": "node = node.children[char]; if !node return false;",
+    "timeComplexity": "O(L) where L is string length",
+    "spaceComplexity": "O(N * L)",
+    "importantPatterns": ["Prefix Search", "Bit Trie"],
+    "realWorldApplications": ["Autocomplete", "Spell checker"],
+    "relatedTopics": ["Strings", "Trees"],
+    "codeImplementations": {"java": "class TrieNode { TrieNode[] children = new TrieNode[26]; boolean isEnd; }", "cpp": "struct TrieNode { TrieNode* children[26]; bool isEnd; };"},
+    "practiceQuestions": [
+      {"difficulty": "EASY", "prompt": "Implement Trie", "solution": "Insert/Search/Prefix", "explanation": "O(L)"},
+      {"difficulty": "EASY", "prompt": "Longest Common Prefix", "solution": "Trie traversal", "explanation": "O(S)"},
+      {"difficulty": "EASY", "prompt": "Search words", "solution": "Standard Trie", "explanation": "O(L)"},
+      {"difficulty": "EASY", "prompt": "Prefix count", "solution": "Node counter field", "explanation": "O(L)"},
+      {"difficulty": "EASY", "prompt": "Replace words", "solution": "Find shortest prefix", "explanation": "O(N*L)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Design Add/Search Word", "solution": "Trie + DFS for '.'", "explanation": "O(26^L)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Maximum XOR of Two Numbers", "solution": "Bit Trie", "explanation": "O(N)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Word Dictionary", "solution": "Wildcard matching", "explanation": "O(N)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Camelcase Matching", "solution": "Trie or Two Pointers", "explanation": "O(N)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Map Sum Pairs", "solution": "Prefix sum on nodes", "explanation": "O(L)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Implement Magic Dictionary", "solution": "DFS 1 change", "explanation": "O(N*L)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Search Suggestions", "solution": "Trie + DFS/Sort", "explanation": "O(N*L)"},
+      {"difficulty": "ADVANCED", "prompt": "Word Search II", "solution": "Trie + Grid DFS", "explanation": "O(R*C*3^L)"},
+      {"difficulty": "ADVANCED", "prompt": "Palindrome Pairs", "solution": "Trie with reversed words", "explanation": "O(N*L^2)"},
+      {"difficulty": "ADVANCED", "prompt": "Concatenated Words", "solution": "Trie + DFS", "explanation": "O(N*L^3)"},
+      {"difficulty": "ADVANCED", "prompt": "Maximum XOR With Element From Array", "solution": "Offline Bit Trie", "explanation": "O(Q log N)"},
+      {"difficulty": "ADVANCED", "prompt": "Stream of Characters", "solution": "Reversed Trie", "explanation": "O(L)"}
+    ],
+    "placementQuestions": [
+      {"prompt": "Autocomplete System", "hints": ["Trie + Priority Queue"], "solution": "Design"},
+      {"prompt": "Count distinct substrings", "hints": ["Suffix Trie"], "solution": "O(N^2)"},
+      {"prompt": "Max XOR subarray", "hints": ["Prefix XOR + Bit Trie"], "solution": "O(N)"}
+    ],
+    "interviewQuestions": [
+      {"question": "Trie vs Hash Map?", "answer": "Trie supports prefix queries, Hash does not.", "explanation": "Trade-off."},
+      {"question": "Space complexity?", "answer": "High, O(ALPHABET_SIZE * L * N).", "explanation": "Lots of pointers."},
+      {"question": "Time complexity?", "answer": "O(L) for length of word.", "explanation": "Independent of N."},
+      {"question": "Bit Trie?", "answer": "Trie for binary representations.", "explanation": "Used for max XOR."},
+      {"question": "Suffix Trie?", "answer": "Trie containing all suffixes of a string.", "explanation": "Pattern matching."},
+      {"question": "isEndOfWord flag?", "answer": "Marks valid words.", "explanation": "Prefixes vs full words."},
+      {"question": "Radix Tree (Patricia Trie)?", "answer": "Compressed Trie.", "explanation": "Saves space."},
+      {"question": "Aho-Corasick?", "answer": "Trie + KMP failure links.", "explanation": "Multiple pattern search."},
+      {"question": "Memory optimization?", "answer": "Use HashMaps instead of fixed arrays for children.", "explanation": "Trades speed for space."},
+      {"question": "Deletion in Trie?", "answer": "Remove node if no children and not end of another word.", "explanation": "Recursive cleanup."}
+    ],
+    "deepDiveInterviewQuestions": [
+      {"question": "How does Aho-Corasick algorithm use a Trie?", "answer": "Builds failure links via BFS to allow O(N + matches) multi-pattern search."},
+      {"question": "Radix Tree compression mechanism?", "answer": "Merges nodes with single children to form string edges instead of char edges."},
+      {"question": "Bit Trie for max XOR?", "answer": "Greedy choice follows the opposite bit to maximize the XOR sum."}
+    ],
+    "comparisonQuestions": [
+      {"question": "Trie vs Hash Map", "answer": "Prefix search vs Exact match."},
+      {"question": "Trie vs Binary Search Tree", "answer": "O(L) vs O(L * log N) for strings."}
+    ],
+    "conceptualQuestions": [
+      {"question": "Why is Trie faster than BST for strings?", "answer": "Avoids full string comparisons at each node."},
+      {"question": "Why is space a problem in Tries?", "answer": "Array of 26 pointers per node adds massive overhead."},
+      {"question": "How does Bit Trie maximize XOR?", "answer": "By attempting to find the flipped bit at each level from MSB to LSB."}
+    ],
+    "edgeCases": ["Empty string", "All words have same prefix", "Very long words", "Case sensitivity", "Special characters"],
+    "commonMistakes": ["Forgetting isEndOfWord", "Array out of bounds for chars", "Not cleaning up memory", "Using fixed arrays for Unicode", "Incorrect wildcard DFS"],
+    "mcqs": [
+      {"question": "Time to search length L?", "options": ["O(L)","O(N)","O(log N)","O(L log N)"], "correctOption": "O(L)", "explanation": "Follow L edges"},
+      {"question": "Best for autocomplete?", "options": ["Trie","Hash Map","BST","Array"], "correctOption": "Trie", "explanation": "Prefix matching"},
+      {"question": "Bit Trie use?", "options": ["Max XOR","Sorting","Hashing","Prefix"], "correctOption": "Max XOR", "explanation": "Binary optimization"},
+      {"question": "Compressed Trie name?", "options": ["Radix Tree","B-Tree","AVL Tree","Red-Black"], "correctOption": "Radix Tree", "explanation": "Patricia"},
+      {"question": "Space complexity?", "options": ["High","Low","O(1)","None"], "correctOption": "High", "explanation": "Pointers"}
+    ],
+    "outputBasedQuestions": [
+      {"code": "insert('apple'); search('app')", "output": "False", "explanation": "Prefix, not word"},
+      {"code": "startsWith('app')", "output": "True", "explanation": "Prefix exists"},
+      {"code": "insert('a'); search('a')", "output": "True", "explanation": "Word exists"}
+    ]
+  },
+  {
+    "title": "Greedy",
+    "slug": "greedy",
+    "difficulty": "INTERMEDIATE",
+    "overview": "Make locally optimal choices.",
+    "coreConcepts": ["Local Optimum", "Global Optimum", "Sorting"],
+    "visualExplanation": "Taking the biggest slice of pizza first.",
+    "learningObjectives": ["Identify greedy choice", "Prove optimality", "Interval problems"],
+    "explanation": "Select the best immediate option without considering future consequences.",
+    "internalWorking": "Usually involves sorting or priority queues.",
+    "algorithm": "Sort data, pick best iteratively.",
+    "pseudocode": "sort(items); for item in items: if valid pick(item);",
+    "timeComplexity": "O(n log n) due to sorting",
+    "spaceComplexity": "O(1) or O(n)",
+    "importantPatterns": ["Intervals", "Fractional Knapsack", "Huffman"],
+    "realWorldApplications": ["Data compression", "Routing"],
+    "relatedTopics": ["Sorting", "DP", "Heap"],
+    "codeImplementations": {"java": "Arrays.sort(); // then iterate", "cpp": "sort(); // then iterate"},
+    "practiceQuestions": [
+      {"difficulty": "EASY", "prompt": "Assign Cookies", "solution": "Sort both, match", "explanation": "O(n log n)"},
+      {"difficulty": "EASY", "prompt": "Lemonade Change", "solution": "Track 5s and 10s", "explanation": "O(n)"},
+      {"difficulty": "EASY", "prompt": "Max Units on Truck", "solution": "Sort by units", "explanation": "O(n log n)"},
+      {"difficulty": "EASY", "prompt": "Array Partition I", "solution": "Sort and sum evens", "explanation": "O(n log n)"},
+      {"difficulty": "EASY", "prompt": "Can Place Flowers", "solution": "Check adjacent", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Jump Game", "solution": "Track max reach", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Jump Game II", "solution": "Track jumps and bounds", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Gas Station", "solution": "Track deficit and surplus", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Non-overlapping Intervals", "solution": "Sort by end time", "explanation": "O(n log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Minimum Arrows", "solution": "Sort by end time", "explanation": "O(n log n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Partition Labels", "solution": "Track last occurrences", "explanation": "O(n)"},
+      {"difficulty": "INTERMEDIATE", "prompt": "Task Scheduler", "solution": "Math or Heap", "explanation": "O(n)"},
+      {"difficulty": "ADVANCED", "prompt": "Candy", "solution": "Two passes left/right", "explanation": "O(n)"},
+      {"difficulty": "ADVANCED", "prompt": "Course Schedule III", "solution": "Max heap of durations", "explanation": "O(n log n)"},
+      {"difficulty": "ADVANCED", "prompt": "Minimum Number of Refueling Stops", "solution": "Max heap of gas", "explanation": "O(n log n)"},
+      {"difficulty": "ADVANCED", "prompt": "Patching Array", "solution": "Track max reach", "explanation": "O(n)"},
+      {"difficulty": "ADVANCED", "prompt": "Create Maximum Number", "solution": "Monotonic stacks + merge", "explanation": "O(n^3)"}
+    ],
+    "placementQuestions": [
+      {"prompt": "Fractional Knapsack", "hints": ["Value/Weight ratio"], "solution": "O(n log n)"},
+      {"prompt": "Activity Selection", "hints": ["Sort by finish time"], "solution": "O(n log n)"},
+      {"prompt": "Job Sequencing", "hints": ["Sort by profit, place in deadline slot"], "solution": "O(n^2) or O(n log n)"}
+    ],
+    "interviewQuestions": [
+      {"question": "Greedy choice property?", "answer": "Local optimum leads to global optimum.", "explanation": "Requirement."},
+      {"question": "Does Greedy always work?", "answer": "No, e.g., 0/1 Knapsack.", "explanation": "Requires DP."},
+      {"question": "Fractional vs 0/1 Knapsack?", "answer": "Greedy works for Fractional, DP for 0/1.", "explanation": "Splitting allowed."},
+      {"question": "Why sort by end time for intervals?", "answer": "Leaves maximum room for remaining intervals.", "explanation": "Optimal."},
+      {"question": "Dijkstra is greedy?", "answer": "Yes, picks closest unvisited node.", "explanation": "Min heap."},
+      {"question": "Prim/Kruskal are greedy?", "answer": "Yes, they pick minimum edges.", "explanation": "MST algorithms."},
+      {"question": "Huffman Coding?", "answer": "Greedy compression algorithm.", "explanation": "Merge smallest frequencies."},
+      {"question": "Proving greedy?", "answer": "Exchange argument or induction.", "explanation": "Math proof."},
+      {"question": "Greedy vs DP?", "answer": "DP checks all paths, Greedy picks one.", "explanation": "Efficiency vs Correctness."},
+      {"question": "When to use Greedy?", "answer": "When optimal substructure and greedy choice hold.", "explanation": "Specific problems."}
+    ],
+    "deepDiveInterviewQuestions": [
+      {"question": "Explain the Exchange Argument for proving greedy.", "answer": "Assume an optimal non-greedy solution, swap elements to make it greedy, show the result is equal or better."},
+      {"question": "Matroid theory in Greedy algorithms?", "answer": "A mathematical structure that guarantees a greedy algorithm will find the optimal solution (e.g. MST)."},
+      {"question": "Why does greedy fail on Coin Change with arbitrary denominations?", "answer": "Because a large coin might prevent using a combination of smaller coins that yields a better total count."}
+    ],
+    "comparisonQuestions": [
+      {"question": "Greedy vs DP", "answer": "Heuristic fast choice vs Exhaustive memoization."},
+      {"question": "0/1 Knapsack vs Fractional", "answer": "DP vs Greedy."}
+    ],
+    "conceptualQuestions": [
+      {"question": "Why does sorting help in greedy?", "answer": "It organizes data so the 'best' choice is sequentially available."},
+      {"question": "Why is Dijkstra greedy?", "answer": "It perpetually commits to the shortest known path."},
+      {"question": "Why is Coin Change greedy for US coins?", "answer": "US denominations follow a canonical system where greedy is optimal."}
+    ],
+    "edgeCases": ["All same values", "Negative values if unsupported", "Empty arrays", "Ties in sorting", "Unreachable goals"],
+    "commonMistakes": ["Using greedy when DP is required", "Wrong sorting criteria", "Assuming greedy works without proof", "Local optimum traps", "Ignoring edge constraints"],
+    "mcqs": [
+      {"question": "Requirement?", "options": ["Greedy choice property","Overlapping subproblems","Recursion","Hashing"], "correctOption": "Greedy choice property", "explanation": "Local -> Global"},
+      {"question": "0/1 Knapsack?", "options": ["DP","Greedy","Two Pointers","Hash"], "correctOption": "DP", "explanation": "Indivisible"},
+      {"question": "Fractional Knapsack?", "options": ["Greedy","DP","DFS","BFS"], "correctOption": "Greedy", "explanation": "Divisible"},
+      {"question": "Interval scheduling sort by?", "options": ["End time","Start time","Duration","Random"], "correctOption": "End time", "explanation": "Max room"},
+      {"question": "Huffman coding uses?", "options": ["Min Heap","Stack","Queue","Array"], "correctOption": "Min Heap", "explanation": "Merge smallest"}
+    ],
+    "outputBasedQuestions": [
+      {"code": "coins = [1,3,4], target = 6; greedy(coins, target)", "output": "3", "explanation": "4+1+1 (DP gives 3+3=2)"},
+      {"code": "jump_game([2,3,1,1,4])", "output": "True", "explanation": "Reachable"},
+      {"code": "jump_game([3,2,1,0,4])", "output": "False", "explanation": "Stuck at 0"}
+    ]
+  }
+]
