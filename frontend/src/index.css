@@ -72,6 +72,12 @@ button {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  animation: appFadeIn 0.5s ease-out;
+}
+
+@keyframes appFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .navbar {
@@ -79,10 +85,15 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: var(--color-navbar);
+  background-color: color-mix(in srgb, var(--color-navbar) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-brand {
@@ -183,7 +194,7 @@ button {
   border-radius: var(--radius-full);
   padding: 0.75rem 1.25rem;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
 .search-bar-container:focus-within {
@@ -263,11 +274,19 @@ button {
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  animation: slideUpFade 0.4s ease-out forwards;
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .search-result-item:hover {
   box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-primary-hover);
 }
 
 .result-meta {
